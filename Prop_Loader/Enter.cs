@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Prop_Loader
 {
-    static class Program
+    static class Enter
     {
         /// <summary>
         /// 应用程序的主入口点。
@@ -15,7 +15,7 @@ namespace Prop_Loader
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new Main_Form());
         }
     }
 }
