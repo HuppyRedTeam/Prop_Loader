@@ -10,14 +10,14 @@ namespace Prop_Loader
     class File_loader
     {
         private string prop_path;
-        private FileStream propfile;
+        private StreamReader propfile;
 
         public File_loader(string prop_path)
         {
             this.prop_path = prop_path;
             try
             {
-                propfile = File.OpenRead(prop_path);
+                propfile = new StreamReader(File.OpenRead(prop_path));
             }catch(IOException e)
             {
                 MessageBox.Show(e.ToString(), "server.prop文件不存在！", MessageBoxButtons.OK);
@@ -32,7 +32,23 @@ namespace Prop_Loader
         public string GetIP()
         {
             string N_IPAdress = null;
+            string result;
+            while((result = propfile.ReadLine())!=null){
 
+            }
+            string[] readl = result.Split('=');
+            Console.Write(readl[0]);
+            if (readl[0].Equals("server-ip"))
+            {
+                if (readl[1] != null)
+                {
+                    N_IPAdress = readl[1];
+                }
+                else
+                {
+                    N_IPAdress = "0.0.0.0";
+                }
+            }
             if(N_IPAdress == null)
             {
                 throw new PropFile_Exception("Format Error!");

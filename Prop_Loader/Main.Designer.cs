@@ -90,6 +90,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "基准信息";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // Disk_Usage
             // 
@@ -271,6 +272,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Main_Form";
             this.Text = "读取窗口";
+            this.Load += new System.EventHandler(this.Main_Form_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

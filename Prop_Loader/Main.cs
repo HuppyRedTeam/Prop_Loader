@@ -16,5 +16,15 @@ namespace Prop_Loader
             InitializeComponent();
         }
 
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            File_loader fl = new File_loader(System.Environment.CurrentDirectory+ "/server.properties");
+            this.Bind_IP.Text = fl.GetIP();
+        }
     }
 }
