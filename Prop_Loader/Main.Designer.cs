@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.refresh = new System.Windows.Forms.Button();
             this.Disk_Usage = new System.Windows.Forms.Label();
             this.Memory_Usage = new System.Windows.Forms.Label();
             this.CPU_Usage = new System.Windows.Forms.Label();
@@ -49,9 +50,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.refresh = new System.Windows.Forms.Button();
+            this.status = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.logbox = new System.Windows.Forms.RichTextBox();
+            this.input = new System.Windows.Forms.TextBox();
+            this.Send = new System.Windows.Forms.Button();
+            this.start = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -93,6 +100,16 @@
             this.tabPage1.Text = "基准信息";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // refresh
+            // 
+            this.refresh.Location = new System.Drawing.Point(9, 305);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(72, 22);
+            this.refresh.TabIndex = 18;
+            this.refresh.Text = "刷新";
+            this.refresh.UseVisualStyleBackColor = true;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // Disk_Usage
             // 
@@ -258,6 +275,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.start);
+            this.tabPage2.Controls.Add(this.Send);
+            this.tabPage2.Controls.Add(this.input);
+            this.tabPage2.Controls.Add(this.logbox);
+            this.tabPage2.Controls.Add(this.status);
+            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -266,15 +289,58 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // refresh
+            // status
             // 
-            this.refresh.Location = new System.Drawing.Point(9, 305);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(72, 22);
-            this.refresh.TabIndex = 18;
-            this.refresh.Text = "刷新";
-            this.refresh.UseVisualStyleBackColor = true;
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            this.status.AutoSize = true;
+            this.status.ForeColor = System.Drawing.Color.Maroon;
+            this.status.Location = new System.Drawing.Point(81, 14);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(37, 15);
+            this.status.TabIndex = 1;
+            this.status.Text = "关闭";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 14);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 15);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "当前状态：";
+            // 
+            // logbox
+            // 
+            this.logbox.Location = new System.Drawing.Point(137, 11);
+            this.logbox.Name = "logbox";
+            this.logbox.Size = new System.Drawing.Size(625, 470);
+            this.logbox.TabIndex = 2;
+            this.logbox.Text = "";
+            // 
+            // input
+            // 
+            this.input.Location = new System.Drawing.Point(137, 488);
+            this.input.Name = "input";
+            this.input.Size = new System.Drawing.Size(537, 25);
+            this.input.TabIndex = 3;
+            // 
+            // Send
+            // 
+            this.Send.Location = new System.Drawing.Point(680, 488);
+            this.Send.Name = "Send";
+            this.Send.Size = new System.Drawing.Size(82, 26);
+            this.Send.TabIndex = 4;
+            this.Send.Text = "发送";
+            this.Send.UseVisualStyleBackColor = true;
+            // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(9, 41);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(73, 24);
+            this.start.TabIndex = 5;
+            this.start.Text = "开启";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // Main_Form
             // 
@@ -288,7 +354,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 
         }
 
@@ -316,6 +385,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button refresh;
+        private System.Windows.Forms.Label status;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button start;
+        private System.Windows.Forms.Button Send;
+        private System.Windows.Forms.TextBox input;
+        private System.Windows.Forms.RichTextBox logbox;
     }
 }
 

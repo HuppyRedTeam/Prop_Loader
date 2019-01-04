@@ -96,6 +96,46 @@ namespace Prop_Loader
             throw new PropFile_Exception("未能读取变量"+valuename);
         }
 
+        public string Getgame_mode()
+        {
+            string result;
+            try
+            {
+                result = Getvalue("gamemode");
+                if (result.Equals("0"))
+                {
+                    return "生存模式";
+                }
+                if (result.Equals("1"))
+                {
+                    return "创造模式";
+                }
+                if (result.Equals("2"))
+                {
+                    return "观察模式";
+                }
+                return "其他模式";
+            }
+            catch (PropFile_Exception e)
+            {
+                MessageBox.Show(e.ToString(), "错误", MessageBoxButtons.OK);
+                return "错误";
+            }
+        }
 
+        public string GetWhitelist()
+        {
+            string result;
+            try
+            {
+                result = Getvalue("white-list");
+                return result;
+            }
+            catch (PropFile_Exception e)
+            {
+                MessageBox.Show(e.ToString(), "错误", MessageBoxButtons.OK);
+                return "错误";
+            }
+        }
     }
 }
