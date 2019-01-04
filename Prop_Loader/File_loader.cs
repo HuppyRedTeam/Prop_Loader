@@ -18,7 +18,7 @@ namespace Prop_Loader
             try
             {
                 propfile = new StreamReader(File.OpenRead(prop_path));
-            }catch(IOException e)
+            } catch (IOException e)
             {
                 MessageBox.Show(e.ToString(), "server.prop文件不存在！", MessageBoxButtons.OK);
             }
@@ -31,29 +31,71 @@ namespace Prop_Loader
 
         public string GetIP()
         {
-            string N_IPAdress = null;
             string result;
-            while((result = propfile.ReadLine())!=null){
-
-            }
-            string[] readl = result.Split('=');
-            Console.Write(readl[0]);
-            if (readl[0].Equals("server-ip"))
+            try
             {
-                if (readl[1] != null)
+                result = Getvalue("server-ip");
+                if (result.Equals(""))
                 {
-                    N_IPAdress = readl[1];
+                    return "0.0.0.0";
                 }
                 else
                 {
-                    N_IPAdress = "0.0.0.0";
+                    return result;
+                }
+            }catch(PropFile_Exception e)
+            {
+                MessageBox.Show(e.ToString(), "错误", MessageBoxButtons.OK);
+                return "错误";
+            }
+        }
+
+        public string GetPort()
+        {
+            string result;
+            try
+            {
+                result = Getvalue("server-port");
+                return result;
+            }catch(PropFile_Exception e)
+            {
+                MessageBox.Show(e.ToString(), "错误", MessageBoxButtons.OK);
+                return "错误";
+            }
+        }
+
+        public string GetMaxplayer()
+        {
+            string result;
+            try
+            {
+                result = Getvalue("max-players");
+                return result;
+            }
+            catch (PropFile_Exception e)
+            {
+                MessageBox.Show(e.ToString(), "错误", MessageBoxButtons.OK);
+                return "错误";
+            }
+        }
+
+        private string Getvalue(string valuename)
+        {
+            propfile = new StreamReader(File.OpenRead(prop_path));
+            string[] readl;
+            string readb;
+            while((readb = propfile.ReadLine())!=null){
+                readl = readb.Split('=');
+                if (readl[0].Equals(valuename))
+                {
+                    propfile.Close();
+                    return readl[1]; 
                 }
             }
-            if(N_IPAdress == null)
-            {
-                throw new PropFile_Exception("Format Error!");
-            }
-            return N_IPAdress;
+            propfile.Close();
+            throw new PropFile_Exception("未能读取变量"+valuename);
         }
+
+
     }
 }

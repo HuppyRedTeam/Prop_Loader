@@ -23,8 +23,16 @@ namespace Prop_Loader
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-            File_loader fl = new File_loader(System.Environment.CurrentDirectory+ "/server.properties");
+
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            File_loader fl = new File_loader(System.Environment.CurrentDirectory + @"\server.properties");
             this.Bind_IP.Text = fl.GetIP();
+            this.Prop_path.Text = fl.Getpath();
+            this.Bind_Port.Text = fl.GetPort();
+            this.Max_Player.Text = fl.GetMaxplayer();
         }
     }
 }

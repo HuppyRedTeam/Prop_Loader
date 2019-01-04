@@ -49,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.refresh = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.refresh);
             this.tabPage1.Controls.Add(this.Disk_Usage);
             this.tabPage1.Controls.Add(this.Memory_Usage);
             this.tabPage1.Controls.Add(this.CPU_Usage);
@@ -264,6 +266,16 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // refresh
+            // 
+            this.refresh.Location = new System.Drawing.Point(9, 305);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(72, 22);
+            this.refresh.TabIndex = 18;
+            this.refresh.Text = "刷新";
+            this.refresh.UseVisualStyleBackColor = true;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -303,6 +315,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button refresh;
     }
 }
 
