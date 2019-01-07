@@ -50,12 +50,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.remote_state = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.start = new System.Windows.Forms.Button();
+            this.Send = new System.Windows.Forms.Button();
+            this.input = new System.Windows.Forms.TextBox();
+            this.logbox = new System.Windows.Forms.RichTextBox();
             this.status = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.logbox = new System.Windows.Forms.RichTextBox();
-            this.input = new System.Windows.Forms.TextBox();
-            this.Send = new System.Windows.Forms.Button();
-            this.start = new System.Windows.Forms.Button();
+            this.remote = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -275,6 +278,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.remote);
+            this.tabPage2.Controls.Add(this.remote_state);
+            this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.start);
             this.tabPage2.Controls.Add(this.Send);
             this.tabPage2.Controls.Add(this.input);
@@ -286,8 +292,62 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(771, 520);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "控制台";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // remote_state
+            // 
+            this.remote_state.AutoSize = true;
+            this.remote_state.ForeColor = System.Drawing.Color.Maroon;
+            this.remote_state.Location = new System.Drawing.Point(81, 88);
+            this.remote_state.Name = "remote_state";
+            this.remote_state.Size = new System.Drawing.Size(37, 15);
+            this.remote_state.TabIndex = 8;
+            this.remote_state.Text = "关闭";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 88);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 15);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "当前状态：";
+            // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(9, 41);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(105, 24);
+            this.start.TabIndex = 5;
+            this.start.Text = "开启";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
+            // 
+            // Send
+            // 
+            this.Send.Location = new System.Drawing.Point(680, 488);
+            this.Send.Name = "Send";
+            this.Send.Size = new System.Drawing.Size(82, 26);
+            this.Send.TabIndex = 4;
+            this.Send.Text = "发送";
+            this.Send.UseVisualStyleBackColor = true;
+            this.Send.Click += new System.EventHandler(this.Send_Click);
+            // 
+            // input
+            // 
+            this.input.Location = new System.Drawing.Point(154, 488);
+            this.input.Name = "input";
+            this.input.Size = new System.Drawing.Size(520, 25);
+            this.input.TabIndex = 3;
+            // 
+            // logbox
+            // 
+            this.logbox.Location = new System.Drawing.Point(154, 11);
+            this.logbox.Name = "logbox";
+            this.logbox.Size = new System.Drawing.Size(608, 470);
+            this.logbox.TabIndex = 2;
+            this.logbox.Text = "";
             // 
             // status
             // 
@@ -308,39 +368,15 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "当前状态：";
             // 
-            // logbox
+            // remote
             // 
-            this.logbox.Location = new System.Drawing.Point(137, 11);
-            this.logbox.Name = "logbox";
-            this.logbox.Size = new System.Drawing.Size(625, 470);
-            this.logbox.TabIndex = 2;
-            this.logbox.Text = "";
-            // 
-            // input
-            // 
-            this.input.Location = new System.Drawing.Point(137, 488);
-            this.input.Name = "input";
-            this.input.Size = new System.Drawing.Size(537, 25);
-            this.input.TabIndex = 3;
-            // 
-            // Send
-            // 
-            this.Send.Location = new System.Drawing.Point(680, 488);
-            this.Send.Name = "Send";
-            this.Send.Size = new System.Drawing.Size(82, 26);
-            this.Send.TabIndex = 4;
-            this.Send.Text = "发送";
-            this.Send.UseVisualStyleBackColor = true;
-            // 
-            // start
-            // 
-            this.start.Location = new System.Drawing.Point(9, 41);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(73, 24);
-            this.start.TabIndex = 5;
-            this.start.Text = "开启";
-            this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.start_Click);
+            this.remote.Location = new System.Drawing.Point(9, 115);
+            this.remote.Name = "remote";
+            this.remote.Size = new System.Drawing.Size(105, 31);
+            this.remote.TabIndex = 9;
+            this.remote.Text = "远程控制开关";
+            this.remote.UseVisualStyleBackColor = true;
+            this.remote.Click += new System.EventHandler(this.remote_Click);
             // 
             // Main_Form
             // 
@@ -350,6 +386,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Main_Form";
             this.Text = "读取窗口";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -357,7 +394,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 
         }
 
@@ -391,6 +427,9 @@
         private System.Windows.Forms.Button Send;
         private System.Windows.Forms.TextBox input;
         private System.Windows.Forms.RichTextBox logbox;
+        private System.Windows.Forms.Label remote_state;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button remote;
     }
 }
 

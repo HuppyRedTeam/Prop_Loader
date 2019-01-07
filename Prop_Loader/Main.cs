@@ -69,5 +69,16 @@ namespace Prop_Loader
             t.Abort();
             System.Environment.Exit(0);
         }
+
+        private void Send_Click(object sender, EventArgs e)
+        {
+            Input.WriteLine(input.Text + "\n");
+            input.Text = "";
+        }
+
+        private void remote_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
