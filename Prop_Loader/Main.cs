@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -13,9 +14,11 @@ namespace Prop_Loader
 {
     public partial class Main_Form : Form
     {
-        public StreamReader Output;
-        public StreamWriter Input;
-        public Thread t;
+        StreamReader Output;
+        StreamWriter Input;
+        Thread t;
+        Remote_Control rc;
+        Socket server;
 
         public Main_Form()
         {
@@ -59,14 +62,15 @@ namespace Prop_Loader
             {
                 Thread.Sleep(500);
                 logbox.AppendText(Output.ReadLine() + "\n");
-
             }
 
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            t.Abort();
+            if(t != null){
+                t.Abort();
+            }
             System.Environment.Exit(0);
         }
 
@@ -78,7 +82,26 @@ namespace Prop_Loader
 
         private void remote_Click(object sender, EventArgs e)
         {
+            rc = new Remote_Control();
+            Log("[服务端]：连接成功！");
+            Thread t2 = new Thread(new ThreadStart(Getsocket));
+        }
 
+        private void Getsocket()
+        {
+            Socket a;
+            while ((a=rc.GetSocket()) != null)
+            {
+                this.server = a;
+                Thread.Sleep(100);
+            }
+            Log("已开始监听");
+            Log("监听于：" + a.ToString());
+        }
+
+        private void Log(string label)
+        {
+            logbox.AppendText(label + "\n");
         }
     }
 }

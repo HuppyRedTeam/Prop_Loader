@@ -28,18 +28,19 @@ namespace Prop_Loader
             server.Bind(ipe);
             server.Listen(1);
             socket = server.Accept();
-            socket.Send(Encoding.ASCII.GetBytes("[远程端]: 连接成功"));
+            socket.Send(Encoding.GetEncoding("GB2312").GetBytes("[服务端]：连接成功！"));
         }
 
         public void SendC(string Commands)
         {
-            socket.Send(Encoding.ASCII.GetBytes("[远程端]: " + Commands));
+            socket.Send(Encoding.GetEncoding("GB2312").GetBytes("[远程端]: " + Commands));
         }
-
 
         public Socket GetSocket()
         {
             return socket;
         }
+
+
     }
 }
